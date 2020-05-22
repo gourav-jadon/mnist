@@ -32,3 +32,4 @@ model.compile(optimizer=RMSprop(), loss='categorical_crossentropy',
 h = model.fit(X_train, y_train, epochs=2)
 model.save("mnistmodel.h5")
 print("model trained successfully")
+#added a comment
