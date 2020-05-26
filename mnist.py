@@ -9,6 +9,7 @@ X_train = X_train_1d.astype('float32')
 X_test = X_test_1d.astype('float32')
 from keras.utils.np_utils import to_categorical
 y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)
 
 
 from keras.models import Sequential
@@ -32,5 +33,12 @@ model.compile(optimizer=RMSprop(), loss='categorical_crossentropy',
 h = model.fit(X_train, y_train, epochs=2)
 model.save("mnistmodel.h5")
 print("model trained successfully")
+prediction = model.evaluate(X_test,y_test)
 #added a comment
 #another comment
+with open("accuracy.txt","w") as out_file:
+    
+        out_string = ""
+        out_string += str(prediction[1])
+        out_file.write(out_string)
+print("file created successfully")
